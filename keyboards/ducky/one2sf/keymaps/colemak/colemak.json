@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "notes": "",
+  "notes": "My awesome keymap",
   "documentation": "\"This file is a QMK Configurator export. You can import this at <https://config.qmk.fm>. It can also be used directly with QMK's source code.\n\nTo setup your QMK environment check out the tutorial: <https://docs.qmk.fm/#/newbs>\n\nYou can convert this file to a keymap.c using this command: `qmk json2c {keymap}`\n\nYou can compile this keymap using this command: `qmk compile {keymap}`\"\n",
   "keyboard": "ducky/one2sf/1967st",
-  "keymap": "ducky_one2sf_1967st_ducky_one2sf_1967st_custom_colemak",
+  "keymap": "ducky_one2sf_1967st_colmakfinal",
   "layout": "LAYOUT_all",
   "layers": [
     [
@@ -143,13 +143,13 @@
       "KC_TRNS",
       "TG(2)",
       "KC_TRNS",
-      "KC_PSTE",
-      "KC_MRWD",
+      "TG(0)",
+      "KC_MPRV",
       "KC_TRNS",
-      "KC_MFFD"
+      "KC_MNXT"
     ],
     [
-      "KC_ESC",
+      "QK_GESC",
       "KC_1",
       "KC_2",
       "KC_3",
@@ -160,7 +160,7 @@
       "KC_8",
       "KC_9",
       "KC_0",
-      "KC_DOT",
+      "KC_INT1",
       "KC_INT3",
       "KC_BSPC",
       "KC_DEL",
@@ -174,7 +174,7 @@
       "KC_L",
       "KC_U",
       "KC_Z",
-      "KC_SLSH",
+      "KC_SCLN",
       "KC_LBRC",
       "KC_RBRC",
       "KC_EQL",
@@ -205,14 +205,14 @@
       "KC_NUBS",
       "KC_COMM",
       "KC_DOT",
-      "KC_INT1",
+      "KC_SLSH",
       "KC_RSFT",
       "KC_UP",
       "KC_LCTL",
       "KC_LGUI",
       "KC_LALT",
-      "KC_NO",
-      "KC_RALT",
+      "KC_SPC",
+      "KC_TRNS",
       "MO(1)",
       "KC_RCTL",
       "KC_LEFT",
@@ -220,5 +220,5 @@
       "KC_RGHT"
     ]
   ],
-  "author": ""
+  "author": "Anonymous"
 }
