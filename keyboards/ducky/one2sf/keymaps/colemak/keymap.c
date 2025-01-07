@@ -21,6 +21,66 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #endif // defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
 
 
+rgb_config_t user_config;
+
+void keyboard_post_init_user(void) {
+  // Call the keymap level matrix init.
+
+  // Read the user config from EEPROM
+  user_config.raw = eeconfig_read_user();
+
+  // Set default layer, if enabled
+  if (user_config.enable) {
+    rgb_matrix_enable_noeeprom();
+    rgb_matrix_sethsv_noeeprom(HSV_CYAN);
+    rgb_matrix_mode_noeeprom(1);
+  }
+}
+
+void eeconfig_init_user(void) {  // EEPROM is getting reset!
+  user_config.raw = 0;
+  user_config.enable = true; // We want this enabled by default
+  eeconfig_update_user(user_config.raw); // Write default value to EEPROM now
+
+  // use the non noeeprom versions, to write these values to EEPROM too
+  rgb_matrix_enable(); // Enable RGB by default
+ // Enable RGB by default
+  rgb_matrix_sethsv(HSV_CYAN);  // Set it to CYAN by default
+  rgb_matrix_mode(1); // set to solid by default
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+
+  switch(biton32(state)) {
+  case 0:
+    // Blue
+    rgb_matrix_enable_noeeprom();
+    rgb_matrix_sethsv_noeeprom(HSV_BLUE);
+    break;
+  case 1:
+    // Red
+    rgb_matrix_enable_noeeprom();	
+    rgb_matrix_sethsv_noeeprom(HSV_RED);
+    break;
+  case 2:
+    // Blue
+    rgb_matrix_enable_noeeprom();
+    rgb_matrix_sethsv_noeeprom(HSV_PURPLE);
+    break;
+  default:
+    // White
+    //Read RGB Light State
+    user_config.raw = eeconfig_read_user();
+    //If enabled, set white
+    if (user_config.enable) {
+		rgb_matrix_sethsv_noeeprom(HSV_WHITE);
+	} else { //Otherwise go back to disabled
+		rgb_matrix_disable_noeeprom();
+	}
+    break;
+}
+return state;
+}
 
 
 
